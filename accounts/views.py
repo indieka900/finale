@@ -154,6 +154,7 @@ def login_user(request):
         password = request.POST.get('password')
         try:
             user= CustomUser.objects.get(email=email)
+            # user.set_password(password)
         except CustomUser.DoesNotExist:
             messages.error(request, 'email does not exist!') 
         user = authenticate(request, email=email, password=password)
